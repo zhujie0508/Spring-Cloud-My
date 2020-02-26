@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="config-server" />
+        <module name="spring-batch" />
+        <module name="hystrix-dashboard" />
+        <module name="admin" />
+        <module name="spring-mybatis" />
+        <module name="user-service (1)" />
+        <module name="api-gateway" />
+        <module name="config-client" />
+        <module name="user-service" />
+        <module name="gs-batch-processing" />
+        <module name="api-gateway (1)" />
+        <module name="eureka-server" />
+        <module name="spring-elastic-job" />
+        <module name="eureka" />
+        <module name="SpringBootAdminApplication" />
+        <module name="user-service-2" />
+        <module name="user-service-1" />
+        <module name="configserver" />
+        <module name="spring-boot-admin" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="admin" target="1.8" />
+      <module name="api-gateway" target="1.8" />
+      <module name="api-gateway (1)" target="1.8" />
+      <module name="common" target="1.8" />
+      <module name="config-client" target="1.8" />
+      <module name="config-server" target="1.8" />
+      <module name="configserver" target="1.8" />
+      <module name="elastic-job-lite-console" target="1.5" />
+      <module name="eureka" target="1.8" />
+      <module name="eureka-server" target="1.8" />
+      <module name="gs-batch-processing" target="1.8" />
+      <module name="hystrix-dashboard" target="1.8" />
+      <module name="spring-batch" target="1.8" />
+      <module name="spring-boot-admin" target="1.8" />
+      <module name="spring-cloud" target="1.8" />
+      <module name="spring-cloud-master" target="1.8" />
+      <module name="spring-elastic-job" target="1.8" />
+      <module name="spring-mybatis" target="1.8" />
+      <module name="SpringBootAdminApplication" target="1.8" />
+      <module name="user-service" target="1.8" />
+      <module name="user-service (1)" target="1.8" />
+      <module name="user-service-1" target="1.8" />
+      <module name="user-service-2" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="admin" options="" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,50 @@
+#向 eureka 中心注册
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: "http://127.0.0.1:8761/eureka/"
+  instance:
+    hostname: "127.0.0.1"
+    leaseRenewalIntervalInSeconds: 10
+
+#日志
+logging:
+  level:
+
+#端口号
+server:
+  port: 8009
+
+#微服务名称
+spring:
+  application:
+    name: my-gateway
+
+#网关路由规则
+zuul:
+#  网关超时时间设置
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+  routes:
+    ignoredServices: /**/admin/**
+    my-gateway:  #自定义的名称
+      path: /zuul/** #url 中增加参数 如 localhost/8009/zuul/**/**
+      sensitiveHeaders:
+      serviceId: my-gateway  #微服务名称
+    my-admin:
+      path: /admin/**
+      sensitiveHeaders:
+      serviceId: my-admin
+
+#熔断器配置  即使不用  不配置也报错
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+        timeout:
+          enabled: false
+

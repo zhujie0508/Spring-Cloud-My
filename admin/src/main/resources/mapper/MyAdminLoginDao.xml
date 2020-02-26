@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.admin.dao.MyAdminLoginDao">
+
+    <resultMap type="com.my.admin.entity.MyAdminLogin" id="MyAdminLoginMap">
+        <result property="adminId" column="admin_id" jdbcType="VARCHAR"/>
+        <result property="adminName" column="admin_name" jdbcType="VARCHAR"/>
+        <result property="adminLoginName" column="admin_login_name" jdbcType="VARCHAR"/>
+        <result property="adminLoginPhone" column="admin_login_phone" jdbcType="VARCHAR"/>
+        <result property="adminLoginEmail" column="admin_login_email" jdbcType="VARCHAR"/>
+        <result property="adminLoginPassword" column="admin_login_password" jdbcType="VARCHAR"/>
+        <result property="adminHeadImg" column="admin_head_img" jdbcType="VARCHAR"/>
+        <result property="adminAge" column="admin_age" jdbcType="VARCHAR"/>
+        <result property="adminSex" column="admin_sex" jdbcType="VARCHAR"/>
+        <result property="adminFreeze" column="admin_freeze" jdbcType="VARCHAR"/>
+        <result property="adminNickName" column="admin_nick_name" jdbcType="VARCHAR"/>
+        <result property="adminCreateTime" column="admin_create_time" jdbcType="TIMESTAMP"/>
+        <result property="adminCreateName" column="admin_create_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MyAdminLoginMap">
+        select
+          admin_id, admin_name, admin_login_name, admin_login_phone, admin_login_email, admin_login_password, admin_head_img, admin_age, admin_sex, admin_freeze, admin_nick_name, admin_create_time, admin_create_name
+        from my.my_admin_login
+        where admin_id = #{adminId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="MyAdminLoginMap">
+        select
+          admin_id, admin_name, admin_login_name, admin_login_phone, admin_login_email, admin_login_password, admin_head_img, admin_age, admin_sex, admin_freeze, admin_nick_name, admin_create_time, admin_create_name
+        from my.my_admin_login
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="MyAdminLoginMap">
+        select
+          admin_id, admin_name, admin_login_name, admin_login_phone, admin_login_email, admin_login_password, admin_head_img, admin_age, admin_sex, admin_freeze, admin_nick_name, admin_create_time, admin_create_name
+        from my.my_admin_login
+        <where>
+            <if test="adminId != null and adminId != ''">
+                and admin_id = #{adminId}
+            </if>
+            <if test="adminName != null and adminName != ''">
+                and admin_name = #{adminName}
+            </if>
+            <if test="adminLoginName != null and adminLoginName != ''">
+                and admin_login_name = #{adminLoginName}
+            </if>
+            <if test="adminLoginPhone != null and adminLoginPhone != ''">
+                and admin_login_phone = #{adminLoginPhone}
+            </if>
+            <if test="adminLoginEmail != null and adminLoginEmail != ''">
+                and admin_login_email = #{adminLoginEmail}
+            </if>
+            <if test="adminLoginPassword != null and adminLoginPassword != ''">
+                and admin_login_password = #{adminLoginPassword}
+            </if>
+            <if test="adminHeadImg != null and adminHeadImg != ''">
+                and admin_head_img = #{adminHeadImg}
+            </if>
+            <if test="adminAge != null and adminAge != ''">
+                and admin_age = #{adminAge}
+            </if>
+            <if test="adminSex != null and adminSex != ''">
+                and admin_sex = #{adminSex}
+            </if>
+            <if test="adminFreeze != null and adminFreeze != ''">
+                and admin_freeze = #{adminFreeze}
+            </if>
+            <if test="adminNickName != null and adminNickName != ''">
+                and admin_nick_name = #{adminNickName}
+            </if>
+            <if test="adminCreateTime != null">
+                and admin_create_time = #{adminCreateTime}
+            </if>
+            <if test="adminCreateName != null">
+                and admin_create_name = #{adminCreateName}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="adminId" useGeneratedKeys="true">
+        insert into my.my_admin_login(admin_name, admin_login_name, admin_login_phone, admin_login_email, admin_login_password, admin_head_img, admin_age, admin_sex, admin_freeze, admin_nick_name, admin_create_time, admin_create_name)
+        values (#{adminName}, #{adminLoginName}, #{adminLoginPhone}, #{adminLoginEmail}, #{adminLoginPassword}, #{adminHeadImg}, #{adminAge}, #{adminSex}, #{adminFreeze}, #{adminNickName}, #{adminCreateTime}, #{adminCreateName})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update my.my_admin_login
+        <set>
+            <if test="adminName != null and adminName != ''">
+                admin_name = #{adminName},
+            </if>
+            <if test="adminLoginName != null and adminLoginName != ''">
+                admin_login_name = #{adminLoginName},
+            </if>
+            <if test="adminLoginPhone != null and adminLoginPhone != ''">
+                admin_login_phone = #{adminLoginPhone},
+            </if>
+            <if test="adminLoginEmail != null and adminLoginEmail != ''">
+                admin_login_email = #{adminLoginEmail},
+            </if>
+            <if test="adminLoginPassword != null and adminLoginPassword != ''">
+                admin_login_password = #{adminLoginPassword},
+            </if>
+            <if test="adminHeadImg != null and adminHeadImg != ''">
+                admin_head_img = #{adminHeadImg},
+            </if>
+            <if test="adminAge != null and adminAge != ''">
+                admin_age = #{adminAge},
+            </if>
+            <if test="adminSex != null and adminSex != ''">
+                admin_sex = #{adminSex},
+            </if>
+            <if test="adminFreeze != null and adminFreeze != ''">
+                admin_freeze = #{adminFreeze},
+            </if>
+            <if test="adminNickName != null and adminNickName != ''">
+                admin_nick_name = #{adminNickName},
+            </if>
+            <if test="adminCreateTime != null">
+                admin_create_time = #{adminCreateTime},
+            </if>
+            <if test="adminCreateName != null">
+                admin_create_name = #{adminCreateName},
+            </if>
+        </set>
+        where admin_id = #{adminId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from my.my_admin_login where admin_id = #{adminId}
+    </delete>
+
+    <select id="getLoginName" resultMap="MyAdminLoginMap" >
+        select
+            admin_id,
+            admin_name,
+            admin_login_name,
+            admin_login_phone,
+            admin_login_email,
+            admin_login_password,
+            admin_head_img,
+            admin_age,
+            admin_sex,
+            admin_freeze,
+            admin_nick_name,
+            admin_create_time,
+            admin_create_name
+         from
+            my_admin_login
+        where 1 = 1
+            <if test="nameType == 1">
+                and admin_login_name = #{loginName}
+            </if>
+            <if test="nameType == 2">
+                and admin_login_phone = #{loginName}
+            </if>
+            <if test="nameType == 3">
+                and admin_login_email = #{loginName}
+            </if>
+            and admin_freeze = '0'
+        limit 1
+    </select>
+</mapper>
